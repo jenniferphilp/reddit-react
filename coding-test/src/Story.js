@@ -4,11 +4,8 @@ import _ from 'lodash'
 
 const Story = (props) => {
 return(
-
     props.redditItems.map((item) => {
-
-       let textShortened = _.truncate(item.selftext, { 'length': 500 } )
-
+    let textShortened = _.truncate(item.selftext, { 'length': 500 } )
     return(
         <div key={item.id}>
             <h2>{item.title}</h2>
