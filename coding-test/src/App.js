@@ -5,59 +5,73 @@ import axios from 'axios';
 
 //internal dependencies
 import './App.css';
-import Data from './Data';
 import Header from './Header';
-import Dropdown from './Dropdown';
+import FeaturesBox from './FeaturesBox';
 import Story from './Story';
+import PageLoader from './PageLoader'
 
 class App extends Component {
     constructor(props) {
     super(props)
     this.state = {
-        selectedSubreddit: '',
-        redditItems: []
+        selectedSubreddit: 'nosleep',
+        redditItems: [],
+        loaded: false
     
     }
 }
 
-// componentDidMount(){
+componentDidMount(){
+    this.getData();
+}
+
+
 getData = () => {
     const subreddit = this.state.selectedSubreddit;
     axios.get(`https://www.reddit.com/r/${subreddit}.json`)
     .then(results => {
         const redditItems = results.data.data.children.map(item => item.data) 
-            this.setState({ redditItems })
+            this.setState({ 
+                redditItems, 
+                loaded: true
+             })
         })   
+  
 }
 
 changeReddit = (e) => {
    this.setState({
        selectedSubreddit: e.target.value
    })
-
 }
 
-submitSubreddit = () => {
-    //this.getData();
+handleLoadReddits = (e) => {
+    e.preventDefault();
+    this.setState({
+        loaded: false
+    })
+    this.getData();
 }
     
 render() {
     return (
       <Grid>
-        <Header />
-        <Dropdown 
-            changeReddit={this.changeReddit}
+        <Header 
+            selectedSubreddit={this.state.selectedSubreddit}
         />
+        <PageLoader
+            loaded={this.state.loaded} />
         <Row>
-            <Col sm={8} smOffset={2}>
+            <Col sm={10} smOffset={2}>
                 <Story 
                     redditItems={this.state.redditItems}
                 />
             </Col>
+            <FeaturesBox
+                changeReddit={this.changeReddit}
+                handleLoadReddits={this.handleLoadReddits}
+            />
         </Row>
-        
-
-        
       </Grid>
     );
   }

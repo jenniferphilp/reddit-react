@@ -1,10 +1,11 @@
-
 import React from 'react';
+import { Jumbotron } from 'react-bootstrap';
 
-const Header = () => {
-        return(
-            <h1>This is a title</h1>
-        )
-    
+const Header = (props) => {
+    return(
+        <Jumbotron>
+            <h1>My favourite subreddits</h1>
+            <h2>You are viewing: <small>{props.selectedSubreddit}</small></h2>
+        </Jumbotron>)
 }
 export default Header; 

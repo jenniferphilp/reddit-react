@@ -1,3 +1,11 @@
-.dropdownBox{
-  float: right; 
+.select-reddit-form{
+  position: fixed;
+  right: 175px;
 }
+.successButton{
+  margin-top: 5%;
+}
+div.story{
+  margin-bottom: 5%;
+}
+
