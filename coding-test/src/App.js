@@ -7,7 +7,7 @@ import axios from 'axios';
 import './App.css';
 import Header from './Header';
 import FeaturesBox from './FeaturesBox';
-import Story from './Story';
+import Stories from './Stories';
 import PageLoader from './PageLoader'
 
 class App extends Component {
@@ -63,7 +63,7 @@ render() {
             loaded={this.state.loaded} />
         <Row>
             <Col sm={10} smOffset={2}>
-                <Story 
+                <Stories 
                     redditItems={this.state.redditItems}
                 />
             </Col>

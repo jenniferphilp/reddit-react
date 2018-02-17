@@ -1,12 +1,9 @@
 import React from 'react';
-import { FormControl, Button } from 'react-bootstrap';
-
+import { FormControl, Button, ButtonGroup } from 'react-bootstrap';
+import SubredditOptions from './SubredditOptions'
 
 const FeaturesBox = (props) => {
 
-    const subredditOptions = ['nosleep', 'toronto', 'funny', 'worldnews', 'books']
-    
-    //@TODO separate option and Button into their own components
     return(
             <form className="select-reddit-form">
                 <label>Select a subreddit</label>
@@ -14,25 +11,24 @@ const FeaturesBox = (props) => {
                     componentClass="select" 
                     placeholder="select"
                     onChange={props.changeReddit}>
-            
-                    {subredditOptions.map((subreddit, i) => {
-                        return(
-
-                            <option 
-                                key={i}
-                                value={subreddit}>
-                                {subreddit}
-                            </option>
-                        )
-                    })}
+                    <SubredditOptions />
                 </FormControl>
-                <Button 
-                    type="submit" 
-                    className="successButton"
-                    bsStyle='success' 
-                    onClick={props.handleLoadReddits}>
-                    Submit
-                </Button>
+                <ButtonGroup vertical>
+                    <Button 
+                        type="submit" 
+                        className="buttonGroup"
+                        bsStyle='success' 
+                        onClick={props.handleLoadReddits}>
+                        Submit
+                    </Button>
+                    <Button 
+                        type="submit" 
+                        className="buttonGroup"
+                        bsStyle='primary' 
+                        onClick={props.handleSort}>
+                        Click to Sort by Upvotes
+                    </Button>
+                </ButtonGroup>
             </form>
         
      
