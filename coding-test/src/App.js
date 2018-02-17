@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import { Row, Col, Grid } from 'react-bootstrap';
 import axios from 'axios';
+import _ from 'lodash'
 
 //internal dependencies
 import './App.css';
@@ -16,7 +17,8 @@ class App extends Component {
     this.state = {
         selectedSubreddit: 'nosleep',
         redditItems: [],
-        loaded: false
+        loaded: false,
+        sorted: false
     }
 }
 
@@ -34,7 +36,24 @@ getData = () => {
                 loaded: true
              })
         })   
-  
+}
+
+handleSort = (e) => {
+    e.preventDefault();
+
+    const redditData = {...this.state.redditItems}
+    const sorted = this.state.sorted; 
+
+    let sortedReddits; 
+    //isSortedItem ? sorted =  _.orderBy(dataCopy, [value], ['desc']) : sorted = _.sortBy(dataCopy, o => o[value]);
+    
+    sorted ? sortedReddits =  _.sortBy(redditData, [ o => o.ups ]) : sortedReddits =  _.sortBy(redditData, [ o => -o.ups ])
+
+    
+    this.setState({ 
+        redditItems: sortedReddits, 
+        sorted: !sorted
+    })
 }
 
 changeReddit = (e) => {
@@ -69,6 +88,8 @@ render() {
                 <FeaturesBox
                     changeReddit={this.changeReddit}
                     handleLoadReddits={this.handleLoadReddits}
+                    handleSort={this.handleSort}
+                    sorted={this.state.sorted}
                 />
              </Col>   
         </Row>

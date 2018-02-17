@@ -22,11 +22,11 @@ const FeaturesBox = (props) => {
                         Submit
                     </Button>
                     <Button 
-                        type="submit" 
+                        // type="submit" 
                         className="buttonGroup"
                         bsStyle='primary' 
                         onClick={props.handleSort}>
-                        Click to Sort by Upvotes
+                        {props.sorted ? "Upvotes (low to high)": "Upvotes (high to low)"}
                     </Button>
                 </ButtonGroup>
             </form>
