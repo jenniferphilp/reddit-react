@@ -5,10 +5,10 @@ import axios from 'axios';
 
 //internal dependencies
 import './App.css';
-import Header from './Header';
-import FeaturesBox from './FeaturesBox';
-import Stories from './Stories';
-import PageLoader from './PageLoader'
+import Header from './Components/Header';
+import FeaturesBox from './Components/FeaturesBox';
+import Stories from './Components/Stories';
+import PageLoader from './Components/PageLoader'
 
 class App extends Component {
     constructor(props) {
@@ -17,14 +17,12 @@ class App extends Component {
         selectedSubreddit: 'nosleep',
         redditItems: [],
         loaded: false
-    
     }
 }
 
 componentDidMount(){
     this.getData();
 }
-
 
 getData = () => {
     const subreddit = this.state.selectedSubreddit;
@@ -67,10 +65,12 @@ render() {
                     redditItems={this.state.redditItems}
                 />
             </Col>
-            <FeaturesBox
-                changeReddit={this.changeReddit}
-                handleLoadReddits={this.handleLoadReddits}
-            />
+            <Col>
+                <FeaturesBox
+                    changeReddit={this.changeReddit}
+                    handleLoadReddits={this.handleLoadReddits}
+                />
+             </Col>   
         </Row>
       </Grid>
     );

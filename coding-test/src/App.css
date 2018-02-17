@@ -13,8 +13,8 @@ h3.dateAdded{
   font-size: 1.5em;
   font-weight: 100;
 }
-
-.upvotes{
+/* upvotes container */
+span.upvotes{
   width: 80px;
   height: 25px;
   background-color: #eee;
