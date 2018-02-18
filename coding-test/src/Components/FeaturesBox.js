@@ -36,3 +36,6 @@ const FeaturesBox = props => {
   );
 };
 export default FeaturesBox;
+
+//Consider writing CSS classes with dashes, it makes it easier to know that it's a custom CSS class, and it's industry standard.
+//like: button-group-container

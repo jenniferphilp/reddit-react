@@ -2,14 +2,18 @@
 import React, { Component } from "react";
 import { Row, Col, Grid } from "react-bootstrap";
 import axios from "axios";
-import _ from "lodash";
+import { sortBy } from "lodash";
+// because you're not using the whole library, I destructured the method and then you can use it without the ._ below, but that's personal preferenc
+//really, it's just seems wise to implicity import things when it might make it more clear what you're doing!
+// you can consider doing the same thing with prop. Instead of sending a whole component props you can send what you want it to have, and it can
+// help the reader understand what the component does!
 
 //internal dependencies
 import "./App.css";
 import Header from "./Components/Header";
 import FeaturesBox from "./Components/FeaturesBox";
 import Stories from "./Components/Stories";
-import PageLoader from "./Components/PageLoader";
+// import PageLoader from "./Components/PageLoader";
 
 class App extends Component {
   constructor(props) {
@@ -47,8 +51,8 @@ class App extends Component {
 
     let sortedReddits;
     sorted
-      ? (sortedReddits = _.sortBy(redditData, [o => o.ups]))
-      : (sortedReddits = _.sortBy(redditData, [o => -o.ups]));
+      ? (sortedReddits = sortBy(redditData, [o => o.ups]))
+      : (sortedReddits = sortBy(redditData, [o => -o.ups]));
 
     this.setState({
       redditItems: sortedReddits,
@@ -78,7 +82,7 @@ class App extends Component {
           selectedSubreddit={this.state.selectedSubreddit}
           changeHeader={this.state.changeHeader}
         />
-        <PageLoader loaded={this.state.loaded} />
+        {/* <PageLoader loaded={this.state.loaded} /> */}
         <Row>
           <Col xs={12} sm={9}>
             <Stories redditItems={this.state.redditItems} />
@@ -98,3 +102,6 @@ class App extends Component {
 }
 
 export default App;
+
+//for whatever reason, I could not get pageLoader to compile (I probably have to install something), I could be wrong (I dont know the package) but I think you'd want this loader to wrap the whole component
+//in the loader, so that it prevents the app from rendering until loaded. In it's current state it's not doin much.
