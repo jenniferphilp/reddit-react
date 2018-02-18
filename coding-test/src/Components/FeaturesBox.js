@@ -3,6 +3,7 @@ import { FormControl, Button, ButtonGroup } from 'react-bootstrap';
 import SubredditOptions from './SubredditOptions'
 
 const FeaturesBox = (props) => {
+    //destructure here
 
     return(
             <form>
@@ -13,17 +14,17 @@ const FeaturesBox = (props) => {
                     onChange={props.changeReddit}>
                     <SubredditOptions />
                 </FormControl>
-                <ButtonGroup vertical className="buttonGroupContainer">
+                <ButtonGroup vertical className="button-group-container">
                     <Button 
                         type="submit" 
-                        className="buttonGroup"
+                        className="button-group"
                         bsStyle='success' 
                         onClick={props.handleLoadReddits}>
                         Submit
                     </Button>
                     <Button 
                         // type="submit" 
-                        className="buttonGroup"
+                        className="button-group"
                         bsStyle='primary' 
                         onClick={props.handleSort}>
                         sort by upvotes<br/>

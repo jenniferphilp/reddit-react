@@ -1,17 +1,15 @@
-/* .select-reddit-form{
-  position: fixed;
-} */
-.buttonGroup{
+
+.button-group{
   margin: 5% 0%;
 }
-.buttonGroupContainer{
+.button-group-container{
   width:100%
 }
 div.story{
   margin-bottom: 5%;
 }
 
-h3.dateAdded{
+h3.date-added{
   font-size: 1.5em;
   font-weight: 100;
 }
@@ -27,7 +25,7 @@ span.upvotes{
   color: #007bff
 }
 
-.funnyImage{
+.funny-image{
   border-radius: 50%;
   width: 50px;
 }
