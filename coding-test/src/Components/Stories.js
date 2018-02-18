@@ -1,15 +1,15 @@
 import React from 'react';
-import { truncate } from 'lodash'
-import Story from './Story'
 
-//destructure here 
+import Story from './Story'
+import { shortenParagraph, humanReadableEST } from '../helpers.js'
+
+
 const Stories = ({ redditItems }) => {
     return(
         redditItems.map((item) => {
-            const textShortened = truncate(item.selftext, { 'length': 500 } )
+            const textShortened = shortenParagraph(item.selftext);
+            const formattedDate = humanReadableEST(item.created);
             
-            const convertToEST = (item.created*1000)-18000; 
-            const formattedDate = truncate(new Date(convertToEST).toString() , {'length': 25, 'omission': ' ' });
             return(
                 <Story
                     key={item.id}

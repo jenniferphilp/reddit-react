@@ -10,6 +10,7 @@ import './App.css';
 import Header from './Components/Header';
 import FeaturesBox from './Components/FeaturesBox';
 import Stories from './Components/Stories';
+import { sortReddit } from './helpers'
 
 
 class App extends Component {
@@ -46,11 +47,7 @@ handleSort = (e) => {
 
     const redditData = {...this.state.redditItems}
     const sorted = this.state.sorted; 
-
-    let sortedReddits; 
-    sorted ? (sortedReddits = sortBy(redditData, [
-          o => o.ups
-        ])) : (sortedReddits = sortBy(redditData, [o => -o.ups]));
+    const sortedReddits = sortReddit(sorted, redditData);
 
     this.setState({ 
         redditItems: sortedReddits, 
