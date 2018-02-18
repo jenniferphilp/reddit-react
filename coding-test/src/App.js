@@ -2,14 +2,15 @@
 import React, { Component } from 'react';
 import { Row, Col, Grid } from 'react-bootstrap';
 import axios from 'axios';
-import _ from 'lodash'
+import { sortBy } from 'lodash'
+import Loader from 'react-loader'
 
 //internal dependencies
 import './App.css';
 import Header from './Components/Header';
 import FeaturesBox from './Components/FeaturesBox';
 import Stories from './Components/Stories';
-import PageLoader from './Components/PageLoader'
+
 
 class App extends Component {
     constructor(props) {
@@ -47,7 +48,9 @@ handleSort = (e) => {
     const sorted = this.state.sorted; 
 
     let sortedReddits; 
-    sorted ? sortedReddits =  _.sortBy(redditData, [ o => o.ups ]) : sortedReddits =  _.sortBy(redditData, [ o => -o.ups ])
+    sorted ? (sortedReddits = sortBy(redditData, [
+          o => o.ups
+        ])) : (sortedReddits = sortBy(redditData, [o => -o.ups]));
 
     this.setState({ 
         redditItems: sortedReddits, 
@@ -74,13 +77,16 @@ handleLoadReddits = (e) => {
     
 render() {
     return (
+     <Loader 
+        loaded={this.state.loaded}> 
       <Grid>
         <Header 
           selectedSubreddit={this.state.selectedSubreddit}
           changeHeader={this.state.changeHeader}
         />
-        <PageLoader
-            loaded={this.state.loaded} />
+
+        {/* <Loader
+        loaded={this.state.loaded} /> */}
         <Row>
             <Col xs={12} sm={9}>
                 <Stories 
@@ -95,10 +101,9 @@ render() {
                     sorted={this.state.sorted}
                 />
              </Col>   
-             
-           
         </Row>
       </Grid>
+      </Loader>
     );
   }
 }

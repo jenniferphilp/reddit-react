@@ -1,15 +1,15 @@
 import React from 'react';
-import _ from 'lodash'
+import { truncate } from 'lodash'
 import Story from './Story'
 
-
-const Stories = (props) => {
+//destructure here 
+const Stories = ({ redditItems }) => {
     return(
-        props.redditItems.map((item) => {
-            const textShortened = _.truncate(item.selftext, { 'length': 500 } )
+        redditItems.map((item) => {
+            const textShortened = truncate(item.selftext, { 'length': 500 } )
             
             const convertToEST = (item.created*1000)-18000; 
-            const formattedDate = _.truncate(new Date(convertToEST).toString(), {'length': 25, 'omission': ' ' });
+            const formattedDate = truncate(new Date(convertToEST).toString() , {'length': 25, 'omission': ' ' });
             return(
                 <Story
                     key={item.id}
