@@ -7,8 +7,9 @@ const Stories = (props) => {
     return(
         props.redditItems.map((item) => {
             const textShortened = _.truncate(item.selftext, { 'length': 500 } )
-            const formattedDate = _.truncate(new Date(item.created*1000).toString(), {'length': 25, 'omission': ' ' });
-
+            
+            const convertToEST = (item.created*1000)-18000; 
+            const formattedDate = _.truncate(new Date(convertToEST).toString(), {'length': 25, 'omission': ' ' });
             return(
                 <Story
                     key={item.id}

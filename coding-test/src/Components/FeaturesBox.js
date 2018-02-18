@@ -5,7 +5,7 @@ import SubredditOptions from './SubredditOptions'
 const FeaturesBox = (props) => {
 
     return(
-            <form className="select-reddit-form">
+            <form>
                 <label>Select a subreddit</label>
                 <FormControl 
                     componentClass="select" 
@@ -13,7 +13,7 @@ const FeaturesBox = (props) => {
                     onChange={props.changeReddit}>
                     <SubredditOptions />
                 </FormControl>
-                <ButtonGroup vertical>
+                <ButtonGroup vertical className="buttonGroupContainer">
                     <Button 
                         type="submit" 
                         className="buttonGroup"
@@ -26,7 +26,8 @@ const FeaturesBox = (props) => {
                         className="buttonGroup"
                         bsStyle='primary' 
                         onClick={props.handleSort}>
-                        {props.sorted ? "Upvotes (low to high)": "Upvotes (high to low)"}
+                        sort by upvotes<br/>
+                        {props.sorted ? "(low to high)": "(high to low)"}
                     </Button>
                 </ButtonGroup>
             </form>

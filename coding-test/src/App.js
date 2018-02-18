@@ -18,7 +18,8 @@ class App extends Component {
         selectedSubreddit: 'nosleep',
         redditItems: [],
         loaded: false,
-        sorted: false
+        sorted: false,
+        changeHeader: false
     }
 }
 
@@ -33,7 +34,8 @@ getData = () => {
         const redditItems = results.data.data.children.map(item => item.data) 
             this.setState({ 
                 redditItems, 
-                loaded: true
+                loaded: true,
+                changeHeader: true
              })
         })   
 }
@@ -45,11 +47,8 @@ handleSort = (e) => {
     const sorted = this.state.sorted; 
 
     let sortedReddits; 
-    //isSortedItem ? sorted =  _.orderBy(dataCopy, [value], ['desc']) : sorted = _.sortBy(dataCopy, o => o[value]);
-    
     sorted ? sortedReddits =  _.sortBy(redditData, [ o => o.ups ]) : sortedReddits =  _.sortBy(redditData, [ o => -o.ups ])
 
-    
     this.setState({ 
         redditItems: sortedReddits, 
         sorted: !sorted
@@ -58,14 +57,17 @@ handleSort = (e) => {
 
 changeReddit = (e) => {
    this.setState({
-       selectedSubreddit: e.target.value
+       selectedSubreddit: e.target.value,
+       changeHeader: false
+        
    })
 }
 
 handleLoadReddits = (e) => {
     e.preventDefault();
     this.setState({
-        loaded: false
+        loaded: false,
+       
     })
     this.getData();
 }
@@ -74,17 +76,18 @@ render() {
     return (
       <Grid>
         <Header 
-            selectedSubreddit={this.state.selectedSubreddit}
+          selectedSubreddit={this.state.selectedSubreddit}
+          changeHeader={this.state.changeHeader}
         />
         <PageLoader
             loaded={this.state.loaded} />
         <Row>
-            <Col sm={10} smOffset={2}>
+            <Col xs={12} sm={9}>
                 <Stories 
                     redditItems={this.state.redditItems}
                 />
             </Col>
-            <Col>
+            <Col xs={12} sm={3} className="select-reddit-form">
                 <FeaturesBox
                     changeReddit={this.changeReddit}
                     handleLoadReddits={this.handleLoadReddits}
@@ -92,6 +95,8 @@ render() {
                     sorted={this.state.sorted}
                 />
              </Col>   
+             
+           
         </Row>
       </Grid>
     );
