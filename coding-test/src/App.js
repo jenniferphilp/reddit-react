@@ -2,7 +2,6 @@
 import React, { Component } from 'react';
 import { Row, Col, Grid } from 'react-bootstrap';
 import axios from 'axios';
-import { sortBy } from 'lodash'
 import Loader from 'react-loader'
 
 //internal dependencies
@@ -58,16 +57,14 @@ handleSort = (e) => {
 changeReddit = (e) => {
    this.setState({
        selectedSubreddit: e.target.value,
-       changeHeader: false
-        
+       changeHeader: false   
    })
 }
 
 handleLoadReddits = (e) => {
     e.preventDefault();
     this.setState({
-        loaded: false,
-       
+        loaded: false
     })
     this.getData();
 }
@@ -81,9 +78,6 @@ render() {
           selectedSubreddit={this.state.selectedSubreddit}
           changeHeader={this.state.changeHeader}
         />
-
-        {/* <Loader
-        loaded={this.state.loaded} /> */}
         <Row>
             <Col xs={12} sm={9}>
                 <Stories 

@@ -1,21 +1,21 @@
 import React from 'react';
 
 import Story from './Story'
-import { shortenParagraph, humanReadableEST } from '../helpers.js'
-
+import { shorten, humanReadableTime } from '../helpers.js'
 
 const Stories = ({ redditItems }) => {
     return(
         redditItems.map((item) => {
-            const textShortened = shortenParagraph(item.selftext);
-            const formattedDate = humanReadableEST(item.created);
+            const textShortened = shorten(item.selftext, 500, '...');
+            const formattedDate = humanReadableTime(item.created_utc);
+            const shortenedDate = shorten(formattedDate, 25, '')
             
             return(
                 <Story
                     key={item.id}
                     item = {item}
-                    formattedDate = {formattedDate}
-                    textShortened = {textShortened}
+                    formattedDate={shortenedDate}
+                    textShortened={textShortened}
                 />
                 )
             })

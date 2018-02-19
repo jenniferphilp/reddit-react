@@ -1,8 +1,7 @@
 import React from 'react';
 
 const Story = ({ formattedDate, item, textShortened }) => {
-    //const { item, formattedDate, textShortened } = props;
-
+   
     return(
         <div 
             className="story" 
@@ -12,13 +11,12 @@ const Story = ({ formattedDate, item, textShortened }) => {
             <h3 
                 className="date-added">
                 Date Added: {formattedDate} 
-                {item.thumbnail.includes('.jpg') ? (
-                <img 
-                    alt = "reddit"
-                    className = "funny-image"
-                    src = {item.thumbnail}
+                {item.thumbnail.includes('.jpg') ? 
+                    (<img alt = "reddit"
+                        className = "funny-image"
+                        src = {item.thumbnail}
                     /> 
-                ) : null}
+                    ) : null}
             </h3>
 
             <p>By: {item.author}</p>
