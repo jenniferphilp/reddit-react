@@ -73,28 +73,28 @@ render() {
     return (
      <Loader 
         loaded={this.state.loaded}> 
-      <Grid>
-        <Header 
-          selectedSubreddit={this.state.selectedSubreddit}
-          changeHeader={this.state.changeHeader}
-        />
-        <Row>
-            <Col xs={12} sm={9}>
-                <Stories 
-                    redditItems={this.state.redditItems}
-                />
-            </Col>
-            <Col xs={12} sm={3} className="select-reddit-form">
-                <FeaturesBox
-                    changeReddit={this.changeReddit}
-                    handleLoadReddits={this.handleLoadReddits}
-                    handleSort={this.handleSort}
-                    sorted={this.state.sorted}
-                />
-             </Col>   
-        </Row>
-      </Grid>
-      </Loader>
+        <Grid>
+            <Header 
+            selectedSubreddit={this.state.selectedSubreddit}
+            changeHeader={this.state.changeHeader}
+            />
+            <Row>
+                <Col xs={12} sm={9}>
+                    <Stories 
+                        redditItems={this.state.redditItems}
+                    />
+                </Col>
+                <Col xs={12} sm={3} className="select-reddit-form">
+                    <FeaturesBox
+                        changeReddit={this.changeReddit}
+                        handleLoadReddits={this.handleLoadReddits}
+                        handleSort={this.handleSort}
+                        sorted={this.state.sorted}
+                    />
+                </Col>   
+            </Row>
+        </Grid>
+    </Loader>
     );
   }
 }

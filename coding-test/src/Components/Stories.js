@@ -13,11 +13,10 @@ const Stories = ({ redditItems }) => {
             return(
                 <Story
                     key={item.id}
-                    item = {item}
+                    item={item}
                     formattedDate={shortenedDate}
                     textShortened={textShortened}
-                />
-                )
+                />)
             })
         )
     }

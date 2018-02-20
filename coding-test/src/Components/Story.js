@@ -7,7 +7,8 @@ const Story = ({ formattedDate, item, textShortened }) => {
             className="story" 
             key={item.id}>
             
-            <h2>{item.title} </h2>
+            <h2>{item.title}</h2>
+            
             <h3 
                 className="date-added">
                 Date Added: {formattedDate} 
@@ -20,8 +21,7 @@ const Story = ({ formattedDate, item, textShortened }) => {
             </h3>
 
             <p>By: {item.author}</p>
-            <span 
-                 className="upvotes text-center">{item.ups}</span>          
+            <span className="upvotes text-center">{item.ups}</span>          
             <p>{textShortened}</p>
             <a href={item.url} target="blank">Click for full story</a>
         </div>
