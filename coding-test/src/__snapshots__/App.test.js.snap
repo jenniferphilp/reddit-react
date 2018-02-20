@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test some components! Header renders correctly 1`] = `
+<div
+  className="jumbotron"
+>
+  <h1>
+    my favourite subreddits
+  </h1>
+  <h2>
+    currently viewing: 
+    <small>
+      nosleep
+    </small>
+  </h2>
+</div>
+`;
