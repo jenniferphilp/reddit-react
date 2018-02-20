@@ -1,7 +1,7 @@
 import React from 'react';
 
 const SubredditOptions = () => {
-    const options = ['nosleep', 'toronto', 'funny', 'worldnews', 'books']
+    const options = ['nosleep', 'toronto', 'funny', 'worldnews', 'books', 'grandpajoehate']
    
     return options.map((subreddit) => {
             return(

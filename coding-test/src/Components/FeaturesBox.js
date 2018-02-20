@@ -10,7 +10,6 @@ const FeaturesBox = (props) => {
                 <FormControl 
                     componentClass="select" 
                     placeholder="select"
-                    name="subredditOptions"
                     onChange={props.changeReddit}>
                     <SubredditOptions />
                 </FormControl>

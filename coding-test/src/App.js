@@ -20,7 +20,7 @@ class App extends Component {
         redditItems: [],
         loaded: false,
         sorted: false,
-        changeHeader: false
+        headerValue: 'nosleep'
     }
 }
 
@@ -35,8 +35,7 @@ getData = () => {
         const redditItems = results.data.data.children.map(item => item.data) 
             this.setState({ 
                 redditItems, 
-                loaded: true,
-                changeHeader: true
+                loaded: true
              })
         })   
 }
@@ -56,15 +55,15 @@ handleSort = (e) => {
 
 changeReddit = (e) => {
    this.setState({
-       selectedSubreddit: e.target.value,
-       changeHeader: false   
+       selectedSubreddit: e.target.value, 
    })
 }
 
 handleLoadReddits = (e) => {
     e.preventDefault();
     this.setState({
-        loaded: false
+        loaded: false,
+        headerValue: this.state.selectedSubreddit
     })
     this.getData();
 }
@@ -76,7 +75,7 @@ render() {
         <Grid>
             <Header 
             selectedSubreddit={this.state.selectedSubreddit}
-            changeHeader={this.state.changeHeader}
+            headerValue={this.state.headerValue}
             />
             <Row>
                 <Col xs={12} sm={9}>
