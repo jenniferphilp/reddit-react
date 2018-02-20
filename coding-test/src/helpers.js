@@ -10,13 +10,16 @@ export const sortReddit = (sorted, redditData) => {
     return sortedReddits;
 } 
 
-export const shortenParagraph = (item) => {
-    const textShortened = truncate(item, { 'length': 500 } )
+export const shorten = (item, length, omission) => {
+    const textShortened = truncate(item, { 'length': length, 'omission': omission } )
     return textShortened; 
 }
 
-export const humanReadableEST = (epoch) => {
-    const convertToEST = (epoch*1000)-18000; 
-    const formattedDate = truncate(new Date(convertToEST).toString() , {'length': 25, 'omission': ' ' });
+export const humanReadableTime = (epoch) => {
+    //convert to ms
+    const convertToSeconds = (epoch*1000)
+    //new Date () converts to EST (based on system settings)
+    const formattedDate = new Date(convertToSeconds).toString();
     return formattedDate;
 }
+

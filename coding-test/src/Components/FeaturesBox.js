@@ -3,7 +3,6 @@ import { FormControl, Button, ButtonGroup } from 'react-bootstrap';
 import SubredditOptions from './SubredditOptions'
 
 const FeaturesBox = (props) => {
-    //destructure here
 
     return(
             <form>
@@ -11,6 +10,7 @@ const FeaturesBox = (props) => {
                 <FormControl 
                     componentClass="select" 
                     placeholder="select"
+                    name="subredditOptions"
                     onChange={props.changeReddit}>
                     <SubredditOptions />
                 </FormControl>
@@ -23,7 +23,7 @@ const FeaturesBox = (props) => {
                         Submit
                     </Button>
                     <Button 
-                        // type="submit" 
+                        type="button"
                         className="button-group"
                         bsStyle='primary' 
                         onClick={props.handleSort}>
